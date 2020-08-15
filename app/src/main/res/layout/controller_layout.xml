@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/controlle_id"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/countroller_background"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+
+        <ImageButton
+            android:id="@+id/loopOneByOneBTN"
+            style="@style/ThemeOverlay.AppCompat"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="4dp"
+            android:background="@drawable/circular_changed_color_background"
+            android:src="@drawable/ic_baseline_loop_24"></ImageButton>
+
+        <ImageButton
+            android:id="@+id/loopIsSelfBTN"
+            style="@style/ThemeOverlay.AppCompat"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="4dp"
+            android:background="@drawable/circular_changed_color_background"
+            android:src="@drawable/ic_loop_it_self_24"></ImageButton>
+
+
+        <ImageButton
+            android:id="@+id/loopRandomBTN"
+            style="@style/ThemeOverlay.AppCompat"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="4dp"
+            android:background="@drawable/circular_changed_color_background"
+            android:src="@drawable/ic_baseline_swap_calls_24"></ImageButton>
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#151515"
+        android:orientation="horizontal"
+
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/currentProgress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="00:00"
+            android:textColor="#F18A6A"></TextView>
+
+        <SeekBar
+            android:id="@+id/seekBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:progress="80"
+            android:progressBackgroundTint="#FF9800"
+            android:progressTint="#FF5722"
+            android:thumbTint="#CF4013" />
+
+        <TextView
+            android:id="@+id/songLength"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="13:03"
+            android:textColor="#F18A6A"></TextView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#151515"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <ImageButton
+                android:id="@+id/prevBTN"
+                style="@style/ThemeOverlay.AppCompat"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_margin="4dp"
+
+                android:background="@drawable/circular_changed_color_background"
+                android:src="@drawable/ic_previous_24"></ImageButton>
+
+            <ImageButton
+                android:id="@+id/playPauseBTN"
+                style="@style/ThemeOverlay.AppCompat"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_margin="4dp"
+                android:background="@drawable/circular_changed_color_background"
+                android:src="@drawable/ic_play_circle_filled_24"></ImageButton>
+
+            <ImageButton
+                android:id="@+id/stopBTN"
+                style="@style/ThemeOverlay.AppCompat"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_margin="4dp"
+
+                android:background="@drawable/circular_changed_color_background"
+                android:src="@drawable/ic_stop_24"></ImageButton>
+
+            <ImageButton
+                android:id="@+id/nextBTN"
+                style="@style/ThemeOverlay.AppCompat"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_margin="4dp"
+                android:background="@drawable/circular_changed_color_background"
+                android:src="@drawable/ic_next_24"></ImageButton>
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
+
