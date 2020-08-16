@@ -3,12 +3,12 @@
     <item android:state_pressed="true">
         <shape android:shape="oval">
 
-            <gradient android:startColor="#80CF8EEF"
-                android:centerColor="#80FAB764"
+            <gradient android:startColor="#10CF8EEF"
+                android:centerColor="#10FAB764"
                 android:angle="45"
-                android:endColor="#80F14A98"></gradient>
+                android:endColor="#10F14A98"></gradient>
 
-            <stroke android:color="#09243A" android:width="5dp"/>
+            <stroke android:color="#FF9800" android:width="1dp"/>
             <!-- Set the same value for both width and height to get a circular shape -->
             <size android:width="70dp" android:height="70dp"/>
         </shape>

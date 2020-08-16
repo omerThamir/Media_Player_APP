@@ -4,16 +4,15 @@
         <shape android:shape="oval">
 
             <gradient android:startColor="#E1DBE4"
-                android:centerColor="#F4A94A"
+                android:centerColor="#CF8E3B"
                 android:angle="90"
-                android:endColor="#3C2C33"></gradient>
+                android:endColor="#BA4277"></gradient>
 
-            <stroke android:color="#09243A" android:width="5dp"/>
+            <stroke android:color="#FF9800" android:width="2dp"/>
             <!-- Set the same value for both width and height to get a circular shape -->
             <size android:width="70dp" android:height="70dp"/>
         </shape>
     </item>
-
 
     <item android:state_enabled="true">
 
@@ -24,7 +23,7 @@
                 android:angle="45"
                 android:endColor="#EA0C74"></gradient>
 
-            <stroke android:color="#09243A" android:width="2dp"/>
+            <stroke android:color="#FF5722" android:width="2dp"/>
             <!-- Set the same value for both width and height to get a circular shape -->
             <size android:width="70dp" android:height="70dp"/>
         </shape>

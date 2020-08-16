@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#282929"
     tools:context=".MainActivity">
 
     <LinearLayout
@@ -15,7 +16,7 @@
         android:layout_alignParentEnd="true"
         android:layout_marginStart="0dp"
         android:layout_marginEnd="0dp"
-        android:background="#1C1C1C"
+        android:background="@drawable/toolbar_background"
         android:gravity="center"
         android:orientation="horizontal"
         android:padding="10dp">
@@ -25,22 +26,24 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:background="@drawable/search_toolbar_background"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingLeft="4dp"
+            android:paddingRight="4dp">
 
             <EditText
                 android:id="@+id/searchET"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="5"
+                android:layout_weight="1"
                 android:gravity="center"
                 android:hint="write some thing"
                 android:textColor="#0E1115"></EditText>
 
             <ImageButton
                 android:id="@+id/searchBTN"
-                android:layout_margin="4dp"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
+                android:layout_margin="4dp"
                 android:background="@drawable/serach_btn_circular_background"
                 android:src="@drawable/ic_baseline_search_24">
 
