@@ -71,22 +71,20 @@ public class PlayingActivity extends AppCompatActivity {
     private MediaPlayer.OnCompletionListener mediaOncompleteLisiner = new MediaPlayer.OnCompletionListener() {
         @Override
         public void onCompletion(MediaPlayer mediaPlayer) {
-            //if there no loop=> stop and clean
+            //if there no loop => stop and clean
             if (!Utils.IsOneByOneLoop && !Utils.isRandomLoop && !Utils.isItSelfLoop) {
                 clearResources();
-                Toast.makeText(PlayingActivity.this, "no loop", Toast.LENGTH_LONG).show();
                 mHandler.removeCallbacks(runnable);
-
 
             } else if (Utils.isRandomLoop) {
                 clearResources();
                 int randomIndex = new Random().nextInt(songsList.size() - 1);
                 playSound(randomIndex);
             } else if (Utils.IsOneByOneLoop) {
-                int curretIndex = Song.currentSongIndex;
-                curretIndex += 1;
-                if (curretIndex >= songsList.size()) curretIndex = 0;
-                playSound(curretIndex);
+                int currentIndex = Song.currentSongIndex;
+                currentIndex += 1;
+                if (currentIndex >= songsList.size()) currentIndex = 0;
+                playSound(currentIndex);
 
             } else if (Utils.isItSelfLoop) {
                 int curretIndex = Song.currentSongIndex;
@@ -243,7 +241,6 @@ public class PlayingActivity extends AppCompatActivity {
                 currentIndex += 1;
                 if (currentIndex >= songsList.size()) currentIndex = 0;
                 playSound(currentIndex);
-                Toast.makeText(PlayingActivity.this, currentIndex + "next", Toast.LENGTH_LONG).show();
                 Song.currentSongIndex = currentIndex;
             }
         });
@@ -269,14 +266,12 @@ public class PlayingActivity extends AppCompatActivity {
                     Utils.IsOneByOneLoop = true;
                     Utils.isRandomLoop = false;
                     updateRandomRepeat();
-                    return;
                 } else {
                     Toast.makeText(PlayingActivity.this, "one by one  loop is off", Toast.LENGTH_SHORT).show();
                     Utils.isItSelfLoop = false;
                     Utils.IsOneByOneLoop = false;
                     Utils.isRandomLoop = false;
                     updateRandomRepeat();
-                    return;
                 }
 
             }
@@ -291,14 +286,12 @@ public class PlayingActivity extends AppCompatActivity {
                     Utils.IsOneByOneLoop = false;
                     Utils.isRandomLoop = false;
                     updateRandomRepeat();
-                    return;
                 } else {
                     Toast.makeText(PlayingActivity.this, "itself loop is off", Toast.LENGTH_SHORT).show();
                     Utils.isItSelfLoop = false;
                     Utils.IsOneByOneLoop = false;
                     Utils.isRandomLoop = false;
                     updateRandomRepeat();
-                    return;
                 }
             }
 
@@ -313,14 +306,12 @@ public class PlayingActivity extends AppCompatActivity {
                     Utils.IsOneByOneLoop = false;
                     Utils.isRandomLoop = true;
                     updateRandomRepeat();
-                    return;
                 } else {
                     Toast.makeText(PlayingActivity.this, "random loop is off", Toast.LENGTH_SHORT).show();
                     Utils.isItSelfLoop = false;
                     Utils.IsOneByOneLoop = false;
                     Utils.isRandomLoop = false;
                     updateRandomRepeat();
-                    return;
                 }
             }
         });
@@ -455,7 +446,7 @@ public class PlayingActivity extends AppCompatActivity {
             oneByOneLoopBtn.setImageResource(R.drawable.ic_loop_one_by_one_off_24);
             loopItselfBtn.setImageResource(R.drawable.ic_loop_it_self_off_24);
         } else {
-            // all off
+            // all are off
             randomLoopBtn.setImageResource(R.drawable.ic_random_loop_off_24);
             oneByOneLoopBtn.setImageResource(R.drawable.ic_loop_one_by_one_off_24);
             loopItselfBtn.setImageResource(R.drawable.ic_loop_it_self_off_24);
