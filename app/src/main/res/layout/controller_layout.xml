@@ -6,31 +6,31 @@
     android:background="@drawable/countroller_background"
     android:orientation="vertical">
 
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal"
         android:padding="10dp">
 
 
         <ImageButton
             android:id="@+id/loopOneByOneBTN"
-            style="@style/ThemeOverlay.AppCompat"
+
             android:layout_width="40dp"
             android:layout_height="40dp"
+            android:layout_gravity="left"
             android:layout_margin="4dp"
             android:background="@drawable/circular_changed_color_background"
-            android:src="@drawable/ic_baseline_loop_24"></ImageButton>
+            android:src="@drawable/ic_loop_one_by_one_off_24"></ImageButton>
 
         <ImageButton
             android:id="@+id/loopIsSelfBTN"
             style="@style/ThemeOverlay.AppCompat"
             android:layout_width="40dp"
             android:layout_height="40dp"
+            android:layout_gravity="center"
             android:layout_margin="4dp"
             android:background="@drawable/circular_changed_color_background"
-            android:src="@drawable/ic_loop_it_self_24"></ImageButton>
+            android:src="@drawable/ic_loop_it_self_off_24"></ImageButton>
 
 
         <ImageButton
@@ -38,12 +38,12 @@
             style="@style/ThemeOverlay.AppCompat"
             android:layout_width="40dp"
             android:layout_height="40dp"
+            android:layout_gravity="right"
             android:layout_margin="4dp"
             android:background="@drawable/circular_changed_color_background"
-            android:src="@drawable/ic_baseline_swap_calls_24"></ImageButton>
+            android:src="@drawable/ic_random_loop_off_24"></ImageButton>
 
-
-    </LinearLayout>
+    </FrameLayout>
 
 
     <LinearLayout
@@ -102,7 +102,7 @@
                 android:layout_margin="4dp"
 
                 android:background="@drawable/circular_changed_color_background"
-                android:src="@drawable/ic_previous_24"></ImageButton>
+                android:src="@drawable/ic_round_previous_40"></ImageButton>
 
             <ImageButton
                 android:id="@+id/playPauseBTN"
@@ -111,7 +111,7 @@
                 android:layout_height="70dp"
                 android:layout_margin="4dp"
                 android:background="@drawable/circular_changed_color_background"
-                android:src="@drawable/ic_play_circle_filled_24"></ImageButton>
+                android:src="@drawable/ic_round_play_40"></ImageButton>
 
             <ImageButton
                 android:id="@+id/stopBTN"
@@ -121,7 +121,7 @@
                 android:layout_margin="4dp"
 
                 android:background="@drawable/circular_changed_color_background"
-                android:src="@drawable/ic_stop_24"></ImageButton>
+                android:src="@drawable/ic_round_stop_40"></ImageButton>
 
             <ImageButton
                 android:id="@+id/nextBTN"
@@ -130,7 +130,7 @@
                 android:layout_height="70dp"
                 android:layout_margin="4dp"
                 android:background="@drawable/circular_changed_color_background"
-                android:src="@drawable/ic_next_24"></ImageButton>
+                android:src="@drawable/ic_round_next_40"></ImageButton>
 
 
         </LinearLayout>

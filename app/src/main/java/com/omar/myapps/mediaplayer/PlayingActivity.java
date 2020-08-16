@@ -2,12 +2,12 @@ package com.omar.myapps.mediaplayer;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
+
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
@@ -15,7 +15,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
-import android.webkit.WebView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.SeekBar;
@@ -195,7 +194,7 @@ public class PlayingActivity extends AppCompatActivity {
                         //  initialy =Zero
                         if (mediaPlayer == null) {
                             playSound(Song.currentSongIndex);
-                            playPauseBTN.setImageResource(R.drawable.ic_pause_circle_filled_24);
+                            playPauseBTN.setImageResource(R.drawable.ic_round_pause_40);
 
                             /**
                              * to keep the screen from dimming or the processor from sleeping
@@ -204,7 +203,7 @@ public class PlayingActivity extends AppCompatActivity {
                             return;
                         } else if (mediaPlayer != null && !mediaPlayer.isPlaying()) {
                             mediaPlayer.start();
-                            playPauseBTN.setImageResource(R.drawable.ic_pause_circle_filled_24);
+                            playPauseBTN.setImageResource(R.drawable.ic_round_pause_40);
 
                             /**
                              * to keep the screen from dimming or the processor from sleeping
@@ -213,7 +212,7 @@ public class PlayingActivity extends AppCompatActivity {
                             return;
                         } else if (mediaPlayer != null && mediaPlayer.isPlaying()) {
                             mediaPlayer.pause();
-                            playPauseBTN.setImageResource(R.drawable.ic_play_circle_filled_24);
+                            playPauseBTN.setImageResource(R.drawable.ic_round_play_40);
                             mediaPlayer.setScreenOnWhilePlaying(false);
                             releaseAudioFocusForMyApp(PlayingActivity.this);
                             return;
@@ -232,7 +231,7 @@ public class PlayingActivity extends AppCompatActivity {
                             mediaPlayer.release();
                             mediaPlayer = null;
                             releaseAudioFocusForMyApp(PlayingActivity.this);
-                            playPauseBTN.setImageResource(R.drawable.ic_play_circle_filled_24);
+                            playPauseBTN.setImageResource(R.drawable.ic_round_play_40);
                         }
                     }
                 });
@@ -264,32 +263,65 @@ public class PlayingActivity extends AppCompatActivity {
         oneByOneLoopBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(PlayingActivity.this, "on by one loop is on", Toast.LENGTH_SHORT).show();
-                Utils.IsOneByOneLoop = true;
-                Utils.isRandomLoop = false;
-                Utils.isItSelfLoop = false;
+                if (!Utils.IsOneByOneLoop) {
+                    Toast.makeText(PlayingActivity.this, "one by one loop is on", Toast.LENGTH_SHORT).show();
+                    Utils.isItSelfLoop = false;
+                    Utils.IsOneByOneLoop = true;
+                    Utils.isRandomLoop = false;
+                    updateRandomRepeat();
+                    return;
+                } else {
+                    Toast.makeText(PlayingActivity.this, "one by one  loop is off", Toast.LENGTH_SHORT).show();
+                    Utils.isItSelfLoop = false;
+                    Utils.IsOneByOneLoop = false;
+                    Utils.isRandomLoop = false;
+                    updateRandomRepeat();
+                    return;
+                }
+
             }
         });
 
         loopItselfBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(PlayingActivity.this, "itself loop is on", Toast.LENGTH_SHORT).show();
-                Utils.isItSelfLoop = true;
-                Utils.IsOneByOneLoop = false;
-                Utils.isRandomLoop = false;
+                if (!Utils.isItSelfLoop) {
+                    Toast.makeText(PlayingActivity.this, "itself loop is on", Toast.LENGTH_SHORT).show();
+                    Utils.isItSelfLoop = true;
+                    Utils.IsOneByOneLoop = false;
+                    Utils.isRandomLoop = false;
+                    updateRandomRepeat();
+                    return;
+                } else {
+                    Toast.makeText(PlayingActivity.this, "itself loop is off", Toast.LENGTH_SHORT).show();
+                    Utils.isItSelfLoop = false;
+                    Utils.IsOneByOneLoop = false;
+                    Utils.isRandomLoop = false;
+                    updateRandomRepeat();
+                    return;
+                }
             }
+
         });
 
         randomLoopBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(PlayingActivity.this, "random loop is on", Toast.LENGTH_SHORT).show();
-                Utils.isRandomLoop = true;
-                Utils.IsOneByOneLoop = false;
-                Utils.isRandomLoop = false;
-                //
-                // playRandomLoop();
+                if (!Utils.isRandomLoop) {
+                    Toast.makeText(PlayingActivity.this, "random loop is on", Toast.LENGTH_SHORT).show();
+                    Utils.isItSelfLoop = false;
+                    Utils.IsOneByOneLoop = false;
+                    Utils.isRandomLoop = true;
+                    updateRandomRepeat();
+                    return;
+                } else {
+                    Toast.makeText(PlayingActivity.this, "random loop is off", Toast.LENGTH_SHORT).show();
+                    Utils.isItSelfLoop = false;
+                    Utils.IsOneByOneLoop = false;
+                    Utils.isRandomLoop = false;
+                    updateRandomRepeat();
+                    return;
+                }
             }
         });
 
@@ -347,7 +379,7 @@ public class PlayingActivity extends AppCompatActivity {
                 mediaPlayer.start();
                 // setCurrentWorkingReaderAndTitle(songIndex);
                 seekBar.setMax(mediaPlayer.getDuration() / 800);
-                playPauseBTN.setImageResource(R.drawable.ic_pause_circle_filled_24);
+                playPauseBTN.setImageResource(R.drawable.ic_round_play_40);
 
                 String time = Utils.convertMediaPalyerDurationToTimeString(mediaPlayer.getDuration());
                 songLenghTV.setText(time);
@@ -371,7 +403,7 @@ public class PlayingActivity extends AppCompatActivity {
             mediaPlayer = MediaPlayer.create(PlayingActivity.this, Uri.parse(songsList.get(index).filepath));
             mediaPlayer.start();
             seekBar.setMax(mediaPlayer.getDuration() / 800);
-            playPauseBTN.setImageResource(R.drawable.ic_pause_circle_filled_24);
+            playPauseBTN.setImageResource(R.drawable.ic_round_pause_40);
             mediaPlayer.setLooping(false);
             String time = Utils.convertMediaPalyerDurationToTimeString(mediaPlayer.getDuration());
             songLenghTV.setText(time);
@@ -408,4 +440,28 @@ public class PlayingActivity extends AppCompatActivity {
             mHandler = null;
         }
     }
+
+    protected void updateRandomRepeat() {
+        if (Utils.isItSelfLoop && !Utils.IsOneByOneLoop && !Utils.isRandomLoop) {
+            loopItselfBtn.setImageResource(R.drawable.ic_loop_it_self_on_24);
+            oneByOneLoopBtn.setImageResource(R.drawable.ic_loop_one_by_one_off_24);
+            randomLoopBtn.setImageResource(R.drawable.ic_random_loop_off_24);
+        } else if (!Utils.isItSelfLoop && Utils.IsOneByOneLoop && !Utils.isRandomLoop) {
+            oneByOneLoopBtn.setImageResource(R.drawable.ic_loop_one_by_one_on_24);
+            loopItselfBtn.setImageResource(R.drawable.ic_loop_it_self_off_24);
+            randomLoopBtn.setImageResource(R.drawable.ic_random_loop_off_24);
+        } else if (!Utils.isItSelfLoop && !Utils.IsOneByOneLoop && Utils.isRandomLoop) {
+            randomLoopBtn.setImageResource(R.drawable.ic_random_loop_on_24);
+            oneByOneLoopBtn.setImageResource(R.drawable.ic_loop_one_by_one_off_24);
+            loopItselfBtn.setImageResource(R.drawable.ic_loop_it_self_off_24);
+        } else {
+            // all off
+            randomLoopBtn.setImageResource(R.drawable.ic_random_loop_off_24);
+            oneByOneLoopBtn.setImageResource(R.drawable.ic_loop_one_by_one_off_24);
+            loopItselfBtn.setImageResource(R.drawable.ic_loop_it_self_off_24);
+        }
+
+    }
+
+
 }

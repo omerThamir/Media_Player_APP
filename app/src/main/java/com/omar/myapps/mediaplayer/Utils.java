@@ -5,19 +5,15 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
+import android.view.View;
+import android.widget.ImageView;
 
 import java.util.concurrent.TimeUnit;
 
 
 public class Utils {
 
-    public static boolean IsOneByOneLoop, isRandomLoop=false;
-    public static boolean isItSelfLoop=false;
-
-    public static int Add2n(int n1, int n2) {
-        return n1 + n2;
-    }
-
+    public static boolean IsOneByOneLoop, isRandomLoop, isItSelfLoop = false;
 
     public static String convertMediaPalyerDurationToTimeString(int mediaPlayer_duration) {
 
@@ -28,6 +24,5 @@ public class Utils {
                         TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(mediaPlayer_duration)));
         return time;
     }
-
 
 }

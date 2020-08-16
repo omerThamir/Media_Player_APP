@@ -10,6 +10,7 @@ public class AudioMangerHelper {
     public AudioMangerHelper(Context context) {
         mContext = context;
     }
+
     public AudioManager.OnAudioFocusChangeListener mOnAudioFocusChangeListener = new AudioManager.OnAudioFocusChangeListener() {
         public void onAudioFocusChange(int focusChange) {
             switch (focusChange) {
@@ -30,7 +31,7 @@ public class AudioMangerHelper {
                 case AudioManager.AUDIOFOCUS_LOSS_TRANSIENT:
                     if (mContext instanceof PlayingActivity) {
                         ((PlayingActivity) mContext).mediaPlayer.pause();
-                        ((PlayingActivity) mContext).playPauseBTN.setImageResource(R.drawable.ic_play_circle_filled_24);
+                        ((PlayingActivity) mContext).playPauseBTN.setImageResource(R.drawable.ic_round_play_40);
                     }
                     return;
 
