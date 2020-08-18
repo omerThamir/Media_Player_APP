@@ -1,11 +1,7 @@
 package com.omar.myapps.mediaplayer;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.NotificationCompat;
 
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.media.AudioManager;
@@ -27,44 +23,12 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class PlayingActivity extends AppCompatActivity {
-    private static final String NOTIFICATION_CHANNEL_ID = "1000001";
 
     private ArrayList<Song> songsList;
     int songIndex;
     String songName;
     String songUri;
 
-    void showNotification(String songName) {
-
-        Intent intent = new Intent(this, MainActivity.class);
-
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-
-        PendingIntent resultPendingIntent = PendingIntent.getActivity(this,
-                0 /* Request code */, intent,
-                PendingIntent.FLAG_UPDATE_CURRENT);
-
-
-        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this, NOTIFICATION_CHANNEL_ID);
-        mBuilder.setSmallIcon(R.mipmap.ic_launcher);
-        mBuilder.setContentTitle("Title")
-                .setContentText("Content")
-                .setAutoCancel(false)
-                .setContentIntent(resultPendingIntent);
-
-        NotificationManager mNotificationManager = (NotificationManager) this.getSystemService(Context.NOTIFICATION_SERVICE);
-
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-            int importance = NotificationManager.IMPORTANCE_HIGH;
-            NotificationChannel notificationChannel = new NotificationChannel(NOTIFICATION_CHANNEL_ID, "NOTIFICATION_CHANNEL_NAME", importance);
-            assert mNotificationManager != null;
-            mBuilder.setChannelId(NOTIFICATION_CHANNEL_ID);
-            mNotificationManager.createNotificationChannel(notificationChannel);
-        }
-        assert mNotificationManager != null;
-        mNotificationManager.notify(0 /* Request Code */, mBuilder.build());
-        Toast.makeText(this, "notification show be shown", Toast.LENGTH_SHORT).show();
-    }
 
     private ImageView imageView;
 
@@ -87,8 +51,8 @@ public class PlayingActivity extends AppCompatActivity {
                 playSound(currentIndex);
 
             } else if (Utils.isItSelfLoop) {
-                int curretIndex = Song.currentSongIndex;
-                playSound(curretIndex);
+                int currentIndex = Song.currentSongIndex;
+                playSound(currentIndex);
 
             }
         }
@@ -434,7 +398,6 @@ public class PlayingActivity extends AppCompatActivity {
             String time = Utils.convertMediaPalyerDurationToTimeString(mediaPlayer.getDuration());
             songLenghTV.setText(time);
             mediaPlayer.setOnCompletionListener(mediaOncompleteLisiner);
-            showNotification("testtttt song name");
         }
     }
 
