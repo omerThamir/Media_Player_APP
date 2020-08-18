@@ -115,7 +115,9 @@ public class PlayingActivity extends AppCompatActivity {
     private TextView currentProgressTV, songLenghTV;
 
     public ImageButton playPauseBTN,
-            loopItselfBtn, oneByOneLoopBtn, randomLoopBtn;
+            loopItselfBtn, oneByOneLoopBtn, randomLoopBtn, backToPlayListBTn;
+
+    private View include, toolbarPlayingActivity;
 
 
     private AudioManager audioManager;
@@ -133,7 +135,13 @@ public class PlayingActivity extends AppCompatActivity {
         loopItselfBtn = findViewById(R.id.loopIsSelfBTN);
         randomLoopBtn = findViewById(R.id.loopRandomBTN);
 
+
+        backToPlayListBTn = findViewById(R.id.backToPlayListBTn);
+
         imageView = findViewById(R.id.imageView);
+
+        include = findViewById(R.id.includeid);
+        toolbarPlayingActivity = findViewById(R.id.toolbarPlayingActivity);
     }
 
 
@@ -312,6 +320,33 @@ public class PlayingActivity extends AppCompatActivity {
                     Utils.IsOneByOneLoop = false;
                     Utils.isRandomLoop = false;
                     updateRandomRepeat();
+                }
+            }
+        });
+
+
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (include.getVisibility() == View.GONE && toolbarPlayingActivity.getVisibility() == View.GONE) {
+                    include.setVisibility(View.VISIBLE);
+                    toolbarPlayingActivity.setVisibility(View.VISIBLE);
+                    return;
+                } else {
+                    include.setVisibility(View.GONE);
+
+                    toolbarPlayingActivity.setVisibility(View.GONE);
+                    return;
+                }
+            }
+        });
+
+        backToPlayListBTn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(PlayingActivity.this, MainActivity.class));
+                if (mediaPlayer == null) {
+                    finish();
                 }
             }
         });
